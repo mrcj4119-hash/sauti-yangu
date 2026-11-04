@@ -1,0 +1,18 @@
+{
+  "name": "Sauti Yangu",
+  "short_name": "Sauti Yangu",
+  "description": "An online support platform for people with autism, stammering, speech delay, and other speech-related challenges.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071821",
+  "theme_color": "#31b4ff",
+  "icons": [
+    {
+      "src": "assets/sauti-yangu-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

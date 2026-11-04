@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-color-theme="calm">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071821" />
+    <title>Sauti Yangu</title>
+    <meta
+      name="description"
+      content="A communication and peer-support space designed to help people be heard."
+    />
+    <link rel="icon" type="image/png" href="assets/sauti-yangu-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient-backdrop" aria-hidden="true">
+      <img class="ambient-waves" src="assets/ambient-waves.svg" alt="" />
+      <img class="ambient-garden" src="assets/communication-garden.svg" alt="" />
+    </div>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#" data-i18n-aria="appHome" aria-label="Sauti Yangu home">
+          <img class="brand-logo" src="assets/sauti-yangu-icon.png" alt="" />
+          <span>Sauti Yangu</span>
+        </a>
+        <nav id="mainNavigation" class="main-nav hidden" data-i18n-aria="mainNavigation" aria-label="Main navigation">
+          <a href="#community" data-i18n="navCommunity">Community</a>
+          <a href="#matches" data-i18n="navRequests">Requests</a>
+          <a href="#support" data-i18n="navNetwork">My network</a>
+          <a href="#messages" data-i18n="navMessages">Messages</a>
+        </nav>
+        <div class="toolbar">
+          <label for="colorTheme" data-i18n="colorThemeLabel">Colors</label>
+          <select id="colorTheme" aria-describedby="colorThemeNote">
+            <option value="calm" data-i18n="themeCalm">Calm blue</option>
+            <option value="warm" data-i18n="themeWarm">Warm light</option>
+            <option value="contrast" data-i18n="themeContrast">High contrast</option>
+          </select>
+          <label for="uiLanguage" data-i18n="languageLabel">Language</label>
+          <select id="uiLanguage" data-i18n-aria="speechLanguage" aria-label="Interface and speech language">
+            <option value="en">English</option>
+            <option value="sw">Kiswahili</option>
+          </select>
+          <button id="fontSizeBtn" class="ghost-btn" type="button" aria-pressed="false" data-i18n="largerText">
+            Larger text
+          </button>
+          <button id="logoutBtn" class="ghost-btn hidden" type="button" data-i18n="logout">Log out</button>
+        </div>
+      </div>
+      <p class="theme-note" id="colorThemeNote" data-i18n="colorThemeNote">
+        Colors are personal. Choose what feels comfortable; color is never the only cue.
+      </p>
+    </header>
+
+    <main class="page-shell">
+      <section id="authView" class="auth-screen active" aria-labelledby="authTitle">
+        <div class="auth-card">
+          <div class="auth-brand">
+            <img class="campaign-image" src="assets/sauti-yangu-voice-campaign.png" alt="Sauti Yangu — Voice for the Voiceless" />
+            <h1 id="authTitle">Sauti Yangu</h1>
+          </div>
+          <p class="auth-copy" data-i18n="authCopy">
+            A supportive space to communicate, connect, and grow at your own pace.
+          </p>
+          <div class="auth-tabs" role="tablist" aria-label="Account access">
+            <button class="tab-button active" id="loginTab" role="tab" aria-selected="true" aria-controls="loginForm" data-auth-tab="login" type="button" data-i18n="login">Log in</button>
+            <button class="tab-button" id="signupTab" role="tab" aria-selected="false" aria-controls="signupForm" data-auth-tab="signup" type="button" data-i18n="createAccount">Create account</button>
+          </div>
+
+          <form id="loginForm" class="auth-form" aria-labelledby="loginTab">
+            <label for="loginEmail" data-i18n="email">Email</label>
+            <input id="loginEmail" type="email" autocomplete="email" required />
+            <label for="loginPassword" data-i18n="password">Password</label>
+            <input id="loginPassword" type="password" autocomplete="current-password" required />
+            <button class="primary-btn wide" type="submit" data-i18n="enterPlatform">Enter platform</button>
+          </form>
+
+          <form id="signupForm" class="auth-form hidden" aria-labelledby="signupTab">
+            <label for="signupName" data-i18n="fullName">Full name</label>
+            <input id="signupName" type="text" autocomplete="name" maxlength="80" required />
+            <label for="signupEmail" data-i18n="email">Email</label>
+            <input id="signupEmail" type="email" autocomplete="email" maxlength="254" required />
+            <label for="signupPassword" data-i18n="password">Password</label>
+            <input id="signupPassword" type="password" autocomplete="new-password" minlength="10" required aria-describedby="passwordHelp" />
+            <small id="passwordHelp" data-i18n="passwordHelp">Use at least 10 characters.</small>
+            <label for="signupChallenge" data-i18n="supportArea">Support area</label>
+            <select id="signupChallenge" required>
+              <option value="Autism" data-i18n="challengeAutism">Autism</option>
+              <option value="Stammering" data-i18n="challengeStammering">Stammering</option>
+              <option value="Speech delay" data-i18n="challengeDelay">Speech delay</option>
+              <option value="Aphasia" data-i18n="challengeAphasia">Aphasia</option>
+              <option value="Cleft palate" data-i18n="challengeCleft">Cleft palate</option>
+              <option value="Communication anxiety" data-i18n="challengeAnxiety">Communication anxiety</option>
+            </select>
+            <label for="signupBio" data-i18n="shortBio">Short bio (optional)</label>
+            <textarea id="signupBio" rows="3" maxlength="280"></textarea>
+            <button class="primary-btn wide" type="submit" data-i18n="createMyAccount">Create my account</button>
+          </form>
+          <p id="authError" class="auth-error" aria-live="polite" role="status"></p>
+        </div>
+      </section>
+
+      <section id="dashboardView" class="dashboard hidden" aria-label="Sauti Yangu community">
+        <aside class="sidebar panel">
+          <div class="profile-box">
+            <div class="avatar" id="userAvatar" aria-hidden="true">U</div>
+            <div>
+              <h1 id="userName">User</h1>
+              <p id="userChallenge">Support area</p>
+            </div>
+          </div>
+          <div class="mini-stats" aria-label="Community counts">
+            <div><strong id="totalFriends">0</strong><span data-i18n="friends">Friends</span></div>
+            <div><strong id="pendingCount">0</strong><span data-i18n="requests">Requests</span></div>
+          </div>
+          <section class="support-card" aria-labelledby="supportFocusTitle">
+            <p class="eyebrow" data-i18n="supportFocus">Support focus</p>
+            <h2 id="supportFocusTitle" data-i18n="safeCommunication">Safe, respectful communication</h2>
+            <p data-i18n="supportDescription">Connect at your own pace. Only people you accept can message you.</p>
+          </section>
+          <section class="settings-card" aria-labelledby="privacyTitle">
+            <h2 id="privacyTitle" data-i18n="privacySettings">Privacy settings</h2>
+            <p data-i18n="privacyExplanation">Your profile is hidden from discovery unless you choose to show it. Your bio is private unless you choose to share it.</p>
+            <label class="setting-row" for="discoverableToggle">
+              <input id="discoverableToggle" type="checkbox" />
+              <span data-i18n="discoverable">Show my profile in community discovery</span>
+            </label>
+            <label class="setting-row" for="shareBioToggle">
+              <input id="shareBioToggle" type="checkbox" />
+              <span data-i18n="shareBio">Show my bio to community members</span>
+            </label>
+            <label for="profileBio" data-i18n="shortBio">Short bio</label>
+            <textarea id="profileBio" rows="3" maxlength="280"></textarea>
+            <button id="saveProfileBtn" class="secondary-btn small" type="button" data-i18n="savePrivacy">Save privacy settings</button>
+            <p id="privacyStatus" class="status-text" aria-live="polite"></p>
+            <h3 data-i18n="blockedPeople">Blocked people</h3>
+            <ul id="blockedList" class="blocked-list"></ul>
+          </section>
+        </aside>
+
+        <div class="content-area">
+          <section class="hero-panel panel">
+            <div class="hero-heading">
+              <p class="eyebrow" data-i18n="communityHub">Community hub</p>
+              <h2 data-i18n="findYourPeople">Find your people in Sauti Yangu</h2>
+              <img class="hero-illustration" src="assets/communication-garden.svg" alt="" />
+            </div>
+            <div class="voice-box">
+              <label for="voiceInput" data-i18n="speakMessageLabel">Type a message to speak</label>
+              <textarea id="voiceInput" rows="3" maxlength="500" data-i18n-placeholder="messagePlaceholder" placeholder="Type a message you want to speak..."></textarea>
+              <div class="speech-settings">
+                <label for="voiceSelect" data-i18n="voiceLabel">Voice</label>
+                <select id="voiceSelect" data-i18n-aria="speechVoice" aria-label="Speech voice"></select>
+                <label for="speedRange" data-i18n="speedLabel">Speaking speed</label>
+                <output id="speedValue" for="speedRange">0.95x</output>
+                <input id="speedRange" type="range" min="0.65" max="1.25" step="0.05" value="0.95" data-i18n-aria="speechSpeed" aria-label="Speaking speed" />
+              </div>
+              <p class="voice-note" data-i18n="speechVoiceNote">Speech is synthesized by your device. Voice quality and language support depend on the voices installed there.</p>
+              <div class="voice-actions">
+                <button id="voiceSpeakBtn" class="primary-btn" type="button"><svg class="material-icon" aria-hidden="true" focusable="false"><use href="/assets/material-icons.svg#volume_up"></use></svg><span data-i18n="speak">Speak</span></button>
+                <button id="voiceClearBtn" class="ghost-btn" type="button"><svg class="material-icon" aria-hidden="true" focusable="false"><use href="/assets/material-icons.svg#delete"></use></svg><span data-i18n="clear">Clear</span></button>
+              </div>
+              <p id="speechStatus" class="status-text" aria-live="polite"></p>
+            </div>
+            <section class="quick-phrases" aria-labelledby="quickPhrasesTitle">
+              <h3 id="quickPhrasesTitle" data-i18n="quickPhrases">Quick phrases</h3>
+              <div id="quickPhraseList" class="quick-grid"></div>
+              <form id="customPhraseForm" class="custom-phrase-form">
+                <label for="customPhraseInput" data-i18n="addPhraseLabel">Add your own phrase</label>
+                <input id="customPhraseInput" maxlength="100" required />
+                <button class="secondary-btn small" type="submit"><svg class="material-icon" aria-hidden="true" focusable="false"><use href="/assets/material-icons.svg#add"></use></svg><span data-i18n="addPhrase">Add phrase</span></button>
+              </form>
+            </section>
+          </section>
+
+          <div class="main-grid">
+            <section id="community" class="panel" aria-labelledby="communityTitle">
+              <div class="panel-header"><h2 id="communityTitle" data-i18n="peopleSimilar">People with similar support areas</h2><span class="chip" id="discoverCount">0</span></div>
+              <div id="discoverList" class="card-list"></div>
+            </section>
+            <section id="matches" class="panel" aria-labelledby="requestsTitle">
+              <div class="panel-header"><h2 id="requestsTitle" data-i18n="friendRequests">Friend requests</h2><span class="chip accent" id="requestCount">0</span></div>
+              <div id="requestList" class="card-list"></div>
+            </section>
+            <section id="support" class="panel" aria-labelledby="networkTitle">
+              <div class="panel-header"><h2 id="networkTitle" data-i18n="myNetwork">My network</h2><span class="chip" id="friendCount">0</span></div>
+              <div id="friendList" class="card-list"></div>
+            </section>
+          </div>
+
+          <section id="messages" class="panel messages-panel" aria-labelledby="messagesTitle">
+            <div class="panel-header"><div><p class="eyebrow" data-i18n="privateConversations">Private conversations</p><h2 id="messagesTitle" data-i18n="messagesTitle">Messages with accepted friends</h2></div></div>
+            <p data-i18n="messagePrivacy">Messages are only available to you and your accepted friend. Block someone to end the conversation.</p>
+            <div id="conversationList" class="card-list"></div>
+          </section>
+
+          <section id="moderationPanel" class="panel hidden" aria-labelledby="moderationTitle">
+            <div class="panel-header"><h2 id="moderationTitle" data-i18n="moderationQueue">Safety reports</h2></div>
+            <div id="reportList" class="card-list"></div>
+          </section>
+          <p id="appStatus" class="auth-error" aria-live="polite" role="status"></p>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="conversationDialog" class="app-dialog" aria-labelledby="conversationTitle">
+      <form method="dialog" class="dialog-close-row"><button class="ghost-btn" type="submit" data-i18n-aria="closeConversation" aria-label="Close conversation"><svg class="material-icon" aria-hidden="true" focusable="false"><use href="/assets/material-icons.svg#close"></use></svg></button></form>
+      <h2 id="conversationTitle"></h2>
+      <div id="conversationMessages" class="conversation-messages" aria-live="polite"></div>
+      <form id="messageForm" class="message-form">
+        <label for="messageInput" data-i18n="messagePlaceholderLabel">Your message</label>
+        <textarea id="messageInput" maxlength="2000" required></textarea>
+        <button class="primary-btn" type="submit"><svg class="material-icon" aria-hidden="true" focusable="false"><use href="/assets/material-icons.svg#send"></use></svg><span data-i18n="sendMessage">Send message</span></button>
+      </form>
+      <p id="messageStatus" class="status-text" aria-live="polite"></p>
+    </dialog>
+
+    <dialog id="reportDialog" class="app-dialog" aria-labelledby="reportTitle">
+      <form method="dialog" class="dialog-close-row"><button class="ghost-btn" type="submit" data-i18n-aria="closeReport" aria-label="Close report form"><svg class="material-icon" aria-hidden="true" focusable="false"><use href="/assets/material-icons.svg#close"></use></svg></button></form>
+      <h2 id="reportTitle" data-i18n="reportTitle">Report a community member</h2>
+      <form id="reportForm" class="auth-form">
+        <input id="reportUserId" type="hidden" />
+        <label for="reportReason" data-i18n="reportReason">Reason</label>
+        <select id="reportReason" required>
+          <option value="Harassment" data-i18n="reportHarassment">Harassment or bullying</option>
+          <option value="Inappropriate content" data-i18n="reportInappropriate">Inappropriate content</option>
+          <option value="Impersonation" data-i18n="reportImpersonation">Impersonation</option>
+          <option value="Other" data-i18n="reportOther">Other safety concern</option>
+        </select>
+        <label for="reportDetails" data-i18n="reportDetails">Details (optional)</label>
+        <textarea id="reportDetails" maxlength="1000" rows="4"></textarea>
+        <button class="primary-btn" type="submit"><svg class="material-icon" aria-hidden="true" focusable="false"><use href="/assets/material-icons.svg#flag"></use></svg><span data-i18n="submitReport">Submit report</span></button>
+      </form>
+      <p id="reportStatus" class="status-text" aria-live="polite"></p>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

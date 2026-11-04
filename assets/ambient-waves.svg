@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <defs>
+    <linearGradient id="wave-a" x1="140" y1="180" x2="1050" y2="710" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8DCFC3" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#A9C9E6" stop-opacity=".14"/>
+    </linearGradient>
+    <linearGradient id="wave-b" x1="880" y1="30" x2="200" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3D28B" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#87B8AC" stop-opacity=".22"/>
+    </linearGradient>
+  </defs>
+  <circle cx="925" cy="170" r="205" fill="#F3D28B" fill-opacity=".24"/>
+  <path d="M-78 463c155-137 309-167 459-91 168 85 277 87 402 7 125-81 243-74 495 43v420H-78V463Z" fill="url(#wave-a)"/>
+  <path d="M-50 604c173-84 324-83 456 4 146 96 283 102 421 18 153-93 267-97 464-23v239H-50V604Z" fill="url(#wave-b)"/>
+  <path d="M-41 672c185-63 332-47 443 49 139 121 303 129 473 21 135-86 266-93 392-34v134H-41V672Z" fill="#84B9A8" fill-opacity=".18"/>
+  <g fill="#4F887A" fill-opacity=".28">
+    <circle cx="192" cy="350" r="8"/><circle cx="232" cy="328" r="5"/><circle cx="273" cy="364" r="7"/>
+    <circle cx="1002" cy="405" r="7"/><circle cx="1044" cy="378" r="5"/><circle cx="1080" cy="416" r="8"/>
+    <circle cx="770" cy="290" r="5"/><circle cx="803" cy="270" r="7"/>
+  </g>
+</svg>
